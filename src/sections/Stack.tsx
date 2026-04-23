@@ -14,7 +14,7 @@ export function Stack() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center mb-24">
           <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-gold block mb-8">
-            06 / Stack
+            03 / Stack
           </span>
           <h2 className="text-5xl md:text-7xl font-serif leading-tight mb-8">
             My Creative <span className="italic text-brand-gold">Stack</span>

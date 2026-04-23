@@ -29,17 +29,42 @@ export function SpaceStrike() {
     if (gameOver) return;
     
     const interval = setInterval(() => {
-      // Update bullets
-      setBullets(prev => prev.map(b => ({ ...b, y: b.y - 7 })).filter(b => b.y > 0));
+      setBullets(prevB => {
+        const nextB = prevB.map(b => ({ ...b, y: b.y - 7 })).filter(b => b.y > 0);
+        
+        let hitMade = false;
+        const filteredBullets = nextB.filter(b => {
+          let bulletIntercepted = false;
+          
+          setEnemies(prevE => {
+            const index = prevE.findIndex(e => 
+              Math.abs(e.x - b.x) < 20 && Math.abs(e.y - b.y) < 20
+            );
+            if (index !== -1) {
+              bulletIntercepted = true;
+              hitMade = true;
+              play('click');
+              const nextE = [...prevE];
+              nextE.splice(index, 1);
+              return nextE;
+            }
+            return prevE;
+          });
+          
+          return !bulletIntercepted;
+        });
 
-      // Update enemies
-      setEnemies(prev => {
-        const next = prev.map(e => ({ ...e, y: e.y + 1 }));
-        if (next.some(e => e.y > HEIGHT - 20)) {
+        if (hitMade) setScore(s => s + 10);
+        return filteredBullets;
+      });
+
+      setEnemies(prevE => {
+        const nextE = prevE.map(e => ({ ...e, y: e.y + 1 }));
+        if (nextE.some(e => e.y > HEIGHT - 20)) {
            setGameOver(true);
            play('secret');
         }
-        return next;
+        return nextE;
       });
 
       // Spawn enemies
@@ -52,30 +77,6 @@ export function SpaceStrike() {
         }]);
         nextEnemy.current = Date.now() + Math.max(1000 - score / 2, 400);
       }
-
-      // Collisions
-      setBullets(prevB => {
-        let hit = false;
-        const remainingB = prevB.filter(b => {
-           let intercepted = false;
-           setEnemies(prevE => {
-             const index = prevE.findIndex(e => 
-               Math.abs(e.x - b.x) < 20 && Math.abs(e.y - b.y) < 20
-             );
-             if (index !== -1) {
-               intercepted = true;
-               hit = true;
-               play('click');
-               return prevE.filter((_, i) => i !== index);
-             }
-             return prevE;
-           });
-           return !intercepted;
-        });
-        if (hit) setScore(s => s + 10);
-        return remainingB;
-      });
-
     }, 16);
 
     return () => clearInterval(interval);

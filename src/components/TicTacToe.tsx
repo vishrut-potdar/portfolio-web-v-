@@ -81,12 +81,22 @@ export function TicTacToe() {
           >
             <AnimatePresence mode="wait">
               {square === 'X' && (
-                <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
+                <motion.div 
+                  key="icon-x"
+                  initial={{ opacity: 0, scale: 0.5 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  exit={{ opacity: 0 }}
+                >
                   <X size={40} strokeWidth={1.5} />
                 </motion.div>
               )}
               {square === 'O' && (
-                <motion.div initial={{ opacity: 0, scale: 0.5 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}>
+                <motion.div 
+                  key="icon-o"
+                  initial={{ opacity: 0, scale: 0.5 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  exit={{ opacity: 0 }}
+                >
                   <Circle size={40} strokeWidth={1.5} />
                 </motion.div>
               )}

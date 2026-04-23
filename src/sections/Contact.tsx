@@ -8,7 +8,7 @@ export function Contact() {
         <div className="grid lg:grid-cols-2 gap-24 items-start">
           <div>
             <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-gold block mb-8">
-              08 / Reach Out
+              06 / Reach Out
             </span>
             <h2 className="text-7xl md:text-9xl font-serif leading-tight mb-12">
               Let's start a <span className="italic text-brand-gold block">conversation.</span>

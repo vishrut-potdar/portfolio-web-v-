@@ -8,15 +8,12 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Hero } from './sections/Hero';
 import { About } from './sections/About';
 import { Journey } from './sections/Journey';
-import { Coordinates } from './sections/Coordinates';
 import { Hobbies } from './sections/Hobbies';
 import { Stack } from './sections/Stack';
 import { Learning } from './sections/Learning';
 import { Contact } from './sections/Contact';
 import { Arcade } from './sections/Arcade';
-import { useEffect, useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { View } from '@react-three/drei';
+import { useEffect } from 'react';
 
 import { Navbar } from './components/Navbar';
 import { CustomCursor } from './components/CustomCursor';
@@ -48,33 +45,21 @@ function GlobalShortcuts() {
 }
 
 function MainPortfolio() {
-  const containerRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-brand-bg">
+    <div className="relative min-h-screen bg-brand-bg">
       <CustomCursor />
       <Navbar />
-      <Hero />
-      <div id="about"><About /></div>
-      <div id="journey"><Journey /></div>
-      <Coordinates />
-      <div id="stack"><Stack /></div>
-      <Learning />
-      <Hobbies />
-      <div id="contact"><Contact /></div>
       
-      {/* Global Unified WebGL Layer - Optimized for interaction and visibility */}
-      <Canvas 
-        className="fixed inset-0"
-        style={{ zIndex: 45, pointerEvents: 'none' }}
-        eventSource={containerRef as any}
-        shadows
-        gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
-        camera={{ position: [0, 0, 5] }}
-      >
-        <View.Port />
-      </Canvas>
-
+      <div className="z-10">
+        <Hero />
+        <div id="about"><About /></div>
+        <div id="journey"><Journey /></div>
+        <div id="stack"><Stack /></div>
+        <Learning />
+        <Hobbies />
+        <div id="contact"><Contact /></div>
+      </div>
+      
       <footer className="py-12 px-6 border-t border-brand-ink/10 text-center relative z-10">
         <p className="text-sm text-brand-ink/60 mb-4 font-mono uppercase tracking-widest">
           Crafted with focus • 2026

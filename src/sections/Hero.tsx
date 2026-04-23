@@ -1,15 +1,12 @@
-import { useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowDown } from 'lucide-react';
 import { useSound } from '../hooks/useSound';
-import { VGlobe } from '../components/VGlobe';
 
 export function Hero() {
   const { play } = useSound();
-  const trackRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 overflow-hidden bg-[radial-gradient(circle_at_70%_20%,#e5e1da_0%,transparent_50%)]">
+    <section className="relative min-h-screen flex flex-col items-center justify-center px-6 md:px-12 overflow-hidden bg-brand-bg">
       {/* Background Decorative Element */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[150%] opacity-[0.03] pointer-events-none select-none">
         <div className="w-full h-full border-[1px] border-brand-ink grid grid-cols-12 grid-rows-12">
@@ -38,7 +35,7 @@ export function Hero() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h1 className="text-6xl md:text-7xl lg:text-[8.5rem] font-serif leading-[0.85] tracking-tight mb-8">
+            <h1 className="text-5xl md:text-6xl lg:text-[5.5rem] font-serif leading-[0.9] tracking-tight mb-8">
               Building with <span className="italic block ml-4 lg:ml-12 text-brand-gold/60">focus,</span>
               creating with care.
             </h1>
@@ -55,12 +52,6 @@ export function Hero() {
                >
                 Read my story
                </button>
-               <button 
-                onClick={() => play('click')}
-                className="px-8 py-4 border border-brand-ink/20 rounded-full font-medium hover:bg-brand-accent/50 transition-all active:scale-95"
-               >
-                Explore the globe
-               </button>
             </div>
           </motion.div>
 
@@ -68,13 +59,13 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, delay: 0.4 }}
-            className="flex justify-center h-[350px] md:h-[500px] w-full relative"
+            className="flex justify-center w-full relative h-[400px] md:h-[500px]"
           >
-            <div className="absolute inset-0 z-10" onClick={() => play('secret')} />
-            <div ref={trackRef} className="w-full h-full cursor-grab active:cursor-grabbing" />
-            <VGlobe track={trackRef} />
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-[10px] uppercase font-mono tracking-[0.5em] text-brand-ink/40 pointer-events-none z-20">
-              Interactive 3D
+            <div className="w-full h-full max-w-[500px] border border-brand-ink/5 rounded-[40px] bg-white/50 backdrop-blur-sm shadow-xl flex items-center justify-center overflow-hidden group">
+               <div className="text-center p-12">
+                  <div className="text-brand-gold text-6xl mb-6 font-serif opacity-20 group-hover:opacity-100 transition-opacity duration-700">V</div>
+                  <div className="font-mono text-[10px] uppercase tracking-[0.4em] text-brand-ink/40">Portfolio 2026</div>
+               </div>
             </div>
           </motion.div>
         </div>

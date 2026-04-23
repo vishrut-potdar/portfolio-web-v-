@@ -18,6 +18,18 @@ export function Arcade() {
   const [solved, setSolved] = useState<number[]>([]);
 
   useEffect(() => {
+    if (gameState !== 'intro') {
+      const handleScrollPrevent = (e: KeyboardEvent) => {
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', ' '].includes(e.key)) {
+          e.preventDefault();
+        }
+      };
+      window.addEventListener('keydown', handleScrollPrevent);
+      return () => window.removeEventListener('keydown', handleScrollPrevent);
+    }
+  }, [gameState]);
+
+  useEffect(() => {
     const symbols = Array.from({ length: 8 }, (_, i) => i);
     const pairGrid = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
     setItems(pairGrid);

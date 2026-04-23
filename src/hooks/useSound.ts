@@ -6,6 +6,10 @@ const sounds: Record<string, string> = {
   click: 'https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3', // Soft click
   success: 'https://assets.mixkit.co/active_storage/sfx/1435/1435-preview.mp3', // Success bell
   secret: 'https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3', // Deep pulse for secret
+  shutter: 'https://assets.mixkit.co/active_storage/sfx/599/599-preview.mp3', // Camera shutter
+  burst: 'https://assets.mixkit.co/active_storage/sfx/2418/2418-preview.mp3', // Firework burst
+  matrix: 'https://assets.mixkit.co/active_storage/sfx/2574/2574-preview.mp3', // Digital beep
+  brush: 'https://assets.mixkit.co/active_storage/sfx/1500/1500-preview.mp3', // Soft sweep
 };
 
 export function useSound() {

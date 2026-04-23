@@ -34,7 +34,7 @@ export function Hobbies() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <span className="text-xs font-mono uppercase tracking-[0.3em] text-brand-gold block mb-8">
-            04 / Off the page
+            05 / Off the page
           </span>
           <h2 className="text-5xl md:text-7xl font-serif leading-tight">
             Hobbies that <span className="italic text-brand-gold">sharpen</span> the mind.
